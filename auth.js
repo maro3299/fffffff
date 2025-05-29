@@ -39,17 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('validate_email.php', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'application/json'
                 },
-                body: new URLSearchParams({ email })
+                body: JSON.stringify({ email })
             });
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
 
-            const result = await response.json();
-            return result;
+            return await response.json();
         } catch (error) {
             console.error('Error validating email:', error);
             
@@ -57,19 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 return { valid: false, error: 'Nieprawidłowy format adresu email' };
-            }
-
-            const domain = email.split('@')[1].toLowerCase();
-            const disposableDomains = [
-                'tempmail.com', 'temp-mail.org', 'guerrillamail.com', 'throwawaymail.com',
-                'yopmail.com', 'mailinator.com', '10minutemail.com', 'trashmail.com',
-                'sharklasers.com', 'guerrillamail.info', 'grr.la', 'maildrop.cc',
-                'getairmail.com', 'getnada.com', 'emailondeck.com', 'tempmail.net',
-                'dispostable.com', 'tempmailaddress.com', 'emailfake.com', 'fakeinbox.com'
-            ];
-
-            if (disposableDomains.includes(domain)) {
-                return { valid: false, error: 'Tymczasowe adresy email nie są dozwolone' };
             }
 
             return { valid: true, error: '' };

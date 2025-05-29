@@ -4,7 +4,16 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-$email = $_POST['email'] ?? '';
+// Get raw POST data
+$rawData = file_get_contents('php://input');
+$data = json_decode($rawData, true);
+
+// Try to get email from either JSON data or POST data
+$email = $data['email'] ?? $_POST['email'] ?? '';
+
+// Log incoming data for debugging
+error_log("Received request with email: " . $email);
+error_log("Raw POST data: " . $rawData);
 
 if (!$email) {
     http_response_code(400);
@@ -27,7 +36,7 @@ if (!checkdnsrr($domain, 'MX')) {
     exit;
 }
 
-// List of disposable email domains - expanded list
+// List of disposable email domains
 $disposableDomains = [
     'tempmail.com', 'temp-mail.org', 'guerrillamail.com', 'throwawaymail.com',
     'yopmail.com', 'mailinator.com', '10minutemail.com', 'trashmail.com',
@@ -42,13 +51,13 @@ if (in_array(strtolower($domain), $disposableDomains)) {
     exit;
 }
 
-// Additional validation for common email providers
+// Common email providers
 $commonProviders = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'wp.pl', 'o2.pl', 'interia.pl', 'onet.pl'];
 $isCommonProvider = in_array(strtolower($domain), $commonProviders);
 
 // If domain is not a common provider, do additional checks
 if (!$isCommonProvider) {
-    // Check if domain has a valid A record (web server)
+    // Check if domain has a valid A record
     if (!checkdnsrr($domain, 'A')) {
         echo json_encode(['valid' => false, 'error' => 'Domena wydaje się być nieprawidłowa']);
         exit;
