@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista do obejrzenia - WFO</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">
+                <i data-lucide="film" class="logo-icon"></i>
+                <span class="logo-text">WFO</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Strona Główna</a>
+                <a href="Filmy.html" class="nav-link">Filmy</a>
+                <a href="Kategorie.html" class="nav-link">Kategorie</a>
+                <a href="Lista do obejrzenia.html" class="nav-link active">Lista do obejrzenia</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-button search-toggle">
+                    <i data-lucide="search"></i>
+                </button>
+                <a href="Logowanie.html" class="icon-button">
+                    <i data-lucide="user-circle"></i>
+                </a>
+                <button class="icon-button menu-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <a href="index.html" class="mobile-nav-link">
+                    <i data-lucide="home"></i>
+                    <span>Strona Główna</span>
+                </a>
+                <a href="Filmy.html" class="mobile-nav-link">
+                    <i data-lucide="film"></i>
+                    <span>Filmy</span>
+                </a>
+                <a href="Kategorie.html" class="mobile-nav-link">
+                    <i data-lucide="list"></i>
+                    <span>Kategorie</span>
+                </a>
+                <a href="Lista do obejrzenia.html" class="mobile-nav-link">
+                    <i data-lucide="bookmark"></i>
+                    <span>Lista do obejrzenia</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="categories">
+            <div class="category-row">
+                <div class="category-header">
+                    <h2>Twoja lista do obejrzenia</h2>
+                </div>
+                <div class="movie-row" id="watchlist">
+                    <!-- Movies will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h1>Nazwa Strony</h1>
+                <p>opis strony</p>
+            </div>
+            <div class="footer-section">
+                <h3>Nawigacja</h3>
+                <ul>
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="Filmy.html">Filmy</a></li>
+                    <li><a href="Kategorie.html">Kategorie</a></li>
+                    <li><a href="Lista do obejrzenia.html">Lista do obejrzenia</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Informacje prawne</h3>
+                <ul>
+                    <li><a href="/privacy">Polityka prywatności</a></li>
+                    <li><a href="/terms">warunki świadczenia usług</a></li>
+                    <li><a href="/cookies">Pliki cookie</a></li>
+                    <li><a href="/copyright">Prawa Autorskie</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <ul>
+                    <li>mail firmy</li>
+                    <li>kod pocztowy</li>
+                    <li>ulica<br>Miasto, Numer budynku</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 WFO. Wszystkie prawa zastrzeżnone.</p>
+            <div class="footer-links">
+                <a href="#">Pomoc</a>
+                <a href="#">Wsparcie</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

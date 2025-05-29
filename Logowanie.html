@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logowanie WFO</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Ukrywanie grupy login jako klasa (lepsze niż style inline) */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="featured-backdrop-log"></div>
+
+    <div class="auth-container">
+        <div class="auth-box">
+
+            <div class="auth-header">
+                <i data-lucide="film" class="auth-logo"></i>
+                <h2 class="auth-title-logo">WFO</h2>
+                <h2 class="auth-title">Witaj Ponownie</h2>
+                <p class="auth-subtitle">Zaloguj się do konta</p>
+            </div>
+
+            <form id="authForm" class="auth-form">
+
+
+                <!-- Grupa login (dla rejestracji), ukryta na start -->
+                <div class="form-group hidden" id="nameGroup">
+                    <label for="login">Login</label>
+                    <div class="input-icon">
+                        <i data-lucide="user"></i>
+                        <input type="text" id="login" name="login">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <div class="input-icon">
+                        <i data-lucide="mail"></i>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Hasło</label>
+                    <div class="input-icon">
+                        <i data-lucide="lock"></i>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                </div>
+
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+                <button type="submit" class="auth-submit">Zaloguj się</button>
+            </form>
+
+            <div class="auth-switch">
+                <button id="switchAuth" type="button">
+                    Nie masz konta? Zarejestruj się!
+                </button>
+            </div>
+
+            <div class="auth-back">
+                <a href="index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    Powróć na stronę główną
+                </a>
+            </div>
+        </div>
+    </div>
+<div id="toast" class="toast" style="display: none;"></div>
+    <script src="shared.js"></script>
+    <script src="auth.js"></script>
+
+
+</body>
+</html>
