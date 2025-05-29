@@ -4,6 +4,10 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
+// Enable error reporting
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 // Get raw POST data
 $rawData = file_get_contents('php://input');
 $data = json_decode($rawData, true);
@@ -14,6 +18,7 @@ $email = $data['email'] ?? $_POST['email'] ?? '';
 // Log incoming data for debugging
 error_log("Received request with email: " . $email);
 error_log("Raw POST data: " . $rawData);
+error_log("Content-Type: " . $_SERVER['CONTENT_TYPE']);
 
 if (!$email) {
     http_response_code(400);
